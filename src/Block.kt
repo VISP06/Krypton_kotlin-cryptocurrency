@@ -14,4 +14,10 @@ data class Block(
     fun calculateHash(): String {
         return "$previousHash$data$timestamp".hash()
     }
+
+    companion object {
+        fun create(previousHash: String, data: String): Block {
+            return Block(previousHash = previousHash, data = data)
+        }
+    }
 }

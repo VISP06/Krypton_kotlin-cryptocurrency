@@ -1,6 +1,6 @@
 fun main() {
     val lumenChain = BlockChain()
-
+    /*
     println("--- Starting the Blockchain ---")
 
     // Adding the first block (The Genesis Block)
@@ -19,4 +19,12 @@ fun main() {
     lumenChain.getChain().forEach { block ->
         println("Hash: ${block.hash} | Nonce: ${block.nonce} | Data: ${block.data}")
     }
+    */
+    val genesisBlock = Block.create(previousHash = "0", data = "I'm the first")
+    val secondBlock = Block.create(genesisBlock.hash, "I'm the second")
+    val thirdBlock = Block.create(secondBlock.hash, "I'm the third")
+
+    println(genesisBlock)
+    println(secondBlock)
+    println(thirdBlock)
 }
