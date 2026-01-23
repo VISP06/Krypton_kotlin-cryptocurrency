@@ -32,7 +32,15 @@ data class Block(
 }
 
 /*
+TL;DR->default setup that boots up as soon as the code is run without doing any operations
 init { ... }:-
  This is the "Setup" block. As soon as you create a new block,
  the computer immediately runs the code inside here to calculate the stamp (hash) so the page isn't blank.
+ */
+
+/*
+TL;DR -> they basically static members
+Companion objects: in Kotlin are special objects that are associated with a class and can hold properties
+and methods that are accessible without creating an instance of the class.
+They act similarly to static members in other programming languages
  */

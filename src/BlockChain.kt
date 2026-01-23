@@ -1,6 +1,7 @@
 class BlockChain {
     private var blocks: MutableList<Block> = mutableListOf()
-
+    //private because only the BlockChain class can touch the list directly. It’s like keeping the diary in a locked drawer so no one can rip out pages.
+    //This is a simple function that takes a Block you’ve already made and sticks it into the blocks list.
     fun add(block: Block): Block{
         val minedBlock = if(isMined(block)) block else mine(block)
         blocks.add(minedBlock)
@@ -45,3 +46,13 @@ class BlockChain {
         return linksValid
     }
 }
+
+/*
+* var minedBlock = block.copy() -> In Kotlin, data classes are usually immutable.
+  So, instead of changing the original block, we make a copy of it to work on.
+* while (!isMined(minedBlock)): This is a loop that keeps running as long as the stamp is "wrong".
+
+* nonce = minedBlock.nonce + 1: Every time the loop runs, it creates a new copy with the nonce number increased by 1.
+
+* It keeps doing this—changing the number and re-checking the stamp—until it finally finds a combination that starts with "00000".
+*/
