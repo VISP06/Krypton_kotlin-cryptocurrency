@@ -4,6 +4,7 @@ import java.time.Instant
  automatically generating useful methods like
  equals(), hashCode(), and toString() based on the properties defined in its primary constructor
  */
+//it is considered best practice to make the data members of a class private and that is done auto by the class parameters i.e '( )'
 data class Block(
     val previousHash: String, //This is the "Magic Stamp" of the page that came right before this one. It’s how the blocks stay connected in a chain.
     val data: String, //This is the actual information you want to store (like "Alice sent 10 coins to Bob").
