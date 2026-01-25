@@ -38,12 +38,17 @@ class BlockChain {
         if (!allBlocksMined) return false
 
         // 3. Check the "Chain" links
-        // .zipWithNext() compares (Block 0 with Block 1), then (Block 1 with Block 2), etc.
-        val linksValid = blocks.zipWithNext().all { (prev, curr) ->
-            curr.previousHash == prev.hash
-        }
+        for (i in 1 until blocks.size) {
+            val currentBlock = blocks[i]
+            val previousBlock = blocks[i - 1]
 
-        return linksValid
+            // Check: Does the "previousHash" inside this block match the actual hash of the last block?
+            if (currentBlock.previousHash != previousBlock.hash) {
+                println("The chain is broken between block ${i-1} and $i!")
+                return false // If they don't match, the whole chain is invalid
+            }
+        }
+        return true
     }
 }
 
